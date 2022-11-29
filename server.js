@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
 const url = 'mongodb://localhost/Crud'
+const userRouter = require("./routes/users")
 dotenv.config()
 
 const app = express();
@@ -16,12 +17,7 @@ con.on('open', ()=> {
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.json({
-        "firstName": "Daniel ezeali"
-    })
-    console.log('API IS RUNNING');
-})
+app.use('/users', userRouter)
 
 
 const PORT = process.env.PORT || 4000;
