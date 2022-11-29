@@ -17,4 +17,21 @@ router.get('/', async(req, res) => {
 
 
 
+router.post('/', async(req, res) => {
+    const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phone: req.body.phone
+    });
+
+    try{
+
+     const a1 =  await  user.save()
+     res.json(a1);
+    }catch(err){
+       res.send('Error')
+    }
+})
+
 module.exports = router;
