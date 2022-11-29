@@ -14,6 +14,17 @@ router.get('/', async(req, res) => {
     }
 })
 
+// getting a single user by id
+
+router.get('/:id', async(req, res) => {
+    try{
+        const users = await User.findById(req.params.id);
+        res.json(users)
+    }catch(err){
+        res.status(404).send("ERROR OCCURED")
+    }
+})
+
 
 
 
